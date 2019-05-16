@@ -30,18 +30,21 @@ public class LoginController extends HttpServlet {
 
 		response.setContentType("UTF-8");
 		request.setCharacterEncoding("UTF-8");
+		// 2.	Lấy dữ liệu từ trang login.jsp gồm Username và password đã nhập vào 
 		String username = request.getParameter("username");
 		String password = request.getParameter("pass");
 		HttpSession session = request.getSession();
+		// 3.	Kiểm tra trong database
 		CheckLogin checkLogin = new CheckLogin();
 		Users users;
 		
 		try {
 			users = checkLogin.checkLogin(username, password);
+			// 3.1	Nếu tồn tại chuyển đến trang welcome.jsp bao gồm thông tin của user
 			if (users != null) {
 				session.setAttribute("user", users);
 				response.sendRedirect("Welcome.jsp");
-
+			// 3.2	Không tồn tại hiển thị thông báo bạn đã nhập sai tên tài khoản hoặc mật khẩu và quay về trang login
 			} else {
 				session.setAttribute("error", " <i class=\"fas fa-exclamation-triangle\"></i>  Bạn đã Nhập sai tên tài khoản hoặc mật khẩu");
 				response.sendRedirect("Login.jsp");
