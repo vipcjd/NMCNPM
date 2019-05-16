@@ -58,7 +58,7 @@
 					</a> <a href="#" class="btn-google m-b-20"> <img
 						src="images/icons/icon-google.png" alt="GOOGLE"> Google
 					</a>
-
+		<!--1. Người dùng nhập Username và password-->
 					<div class="p-t-31 p-b-9">
 						<span class="txt1"> <i class="fas fa-user"></i>
 							&nbsp;Username
